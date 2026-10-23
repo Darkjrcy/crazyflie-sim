@@ -1,0 +1,8 @@
+setuptools==79.0.1
+wheel==0.48.0
+Jinja2==3.1.6
+numpy==1.22.0
+coverage==7.16.2
+numba==0.68.0
+llvmlite==0.50.0
+quaternionic==1.0.18
