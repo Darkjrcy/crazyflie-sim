@@ -137,3 +137,55 @@ xhost +local:docker
 ```
 
 Re-open the folder in the container and check that it is now working correctly.
+
+
+## Steps to OPen teh simulation locally:
+TO build first open the fodler from teh terminal using:
+``` bash
+export BUILDX_BAKE_ENTITLEMENTS_FS=0
+xhost +SI:localuser:root
+code "/home/jorge/JORGE/FALL 2026/AE 626/Project/crazyflie-sim"
+```
+
+After you enter in teh container build the repository:
+``` bash
+./build.sh
+```
+
+Then open the simulation in one terminal:
+``` bash
+cd root/ros2_ws
+source setup.sh 42
+cd ..
+cd root/CrazySim/crazyflie-firmware/
+
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_singleagent.sh \
+    -m crazyflie \
+    -x 0 \
+    -y 0
+```
+
+**NOTE:** If you reopen the dev conainer, you need to run the above command again to rebuilt the package.
+
+## Run the other commands:
+There are three codes that can be run by default
+
+The connection system that checks if the crazyflie is connected using the rotation of the crazyflie in simulation:
+``` bash
+cd /root/ros2_ws/src
+python3 connection_example.py
+```
+
+The demo of flying, which makes the crazy-flie do a demo flight of a square 
+``` bash
+cd /root/CrazySim/crazyflie-lib-python
+CFLIB_URI=udp://0.0.0.0:19850 \
+  python3 examples/autonomy/position_commander_demo.py
+```
+
+In addition, to a demo of the drone making the figure eight:
+``` bash
+cd /root/CrazySim/crazyflie-lib-python
+CFLIB_URI=udp://0.0.0.0:19850 \
+  python3 examples/autonomy/autonomous_sequence_high_level.py
+```
