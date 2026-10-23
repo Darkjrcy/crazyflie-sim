@@ -1,3 +1,6 @@
 [submodule "evs_gz_utils"]
 	path = src/evs_gz_utils
 	url = https://github.com/vision-agh/evs_gz_utils.git
+[submodule "vendor/CrazySim"]
+	path = vendor/CrazySim
+	url = https://github.com/gtfactslab/CrazySim.git
